@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mobilesentry"
+version = "0.2.0"
+description = "Mobile Application Security Testing Framework (Android + iOS)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Yash Patil", email = "yashpatil7714@gmail.com" },
+]
+keywords = ["mobile-security", "android-security", "ios-security", "pentesting", "apk-analysis", "frida"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Security",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed",
+]
+dependencies = [
+    "rich>=13.0",
+    "pydantic>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Yash-Patil-1/mobilesentry"
+Repository = "https://github.com/Yash-Patil-1/mobilesentry"
+BugTracker = "https://github.com/Yash-Patil-1/mobilesentry/issues"
+Changelog = "https://github.com/Yash-Patil-1/mobilesentry/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+analyze = [
+    "androguard>=4.0",
+]
+frida = [
+    "frida>=16.0",
+    "frida-tools>=12.0",
+]
+all = [
+    "mobilesentry[analyze,frida]",
+]
+
+[project.scripts]
+mobilesentry = "mobilesentry.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mobilesentry*"]
+
+[tool.ruff]
+line-length = 200
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "W", "I", "N", "UP", "YTT", "ASYNC", "BLE", "C4", "DTZ", "LOG", "PIE", "PYI", "RET", "RSE", "RUF", "SIM", "T10", "T20", "FLY", "PERF", "FURB"]
+ignore = [
+    "BLE001",
+    "RUF001",
+    "SIM115",
+    "SIM108",
+    "E501",
+    "N818",
+    "RUF012",
+    "S101",
+]
