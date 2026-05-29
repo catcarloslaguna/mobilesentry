@@ -47,18 +47,32 @@
 
 ## Installation
 
+> **⚠️ Note for Kali Linux / Debian 12+:** System-wide `pip install` is blocked to protect the OS.
+> Always use a **virtual environment** as shown below.
+
+### Python Package
+
 ```bash
 # Clone the repository
 git clone https://github.com/Yash-Patil-1/mobilesentry.git
 cd mobilesentry
 
-# Install with pip (recommended)
+# Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install MobileSentry (recommended)
 pip install -e .
 
 # Or install with extra dependencies
 pip install -e ".[analyze]"    # For APK analysis (androguard)
 pip install -e ".[all]"        # All extras
+
+# Verify it works
+mobilesentry --help
 ```
+
+> 💡 **Tip:** Add `mobilesentry/venv/bin` to your PATH or create an alias so you can run `mobilesentry` from anywhere.
 
 ### System Dependencies
 
